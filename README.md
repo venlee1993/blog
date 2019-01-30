@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # vue
 
 > A Vue.js project
@@ -23,4 +22,3 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 =======
 # blog
 vue + laravel5.5
->>>>>>> ff2e456fd0bfb9040029dd94492ec662d3b13a32
