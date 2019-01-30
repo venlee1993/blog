@@ -1,6 +1,6 @@
 # vue
 
-> A Vue.js project
+> 仿照掘金的博客系统前台 vue+vuex+bootstrap
 
 ## Build Setup
 
@@ -18,7 +18,4 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-=======
-# blog
 vue + laravel5.5
