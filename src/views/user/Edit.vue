@@ -72,7 +72,9 @@
                 this.formGroup[index].focus = true;
             },
             inputBlur(index) {
-                this.formGroup[index].focus = false;
+                if(this.formGroup[index]==event.target.getAttribute('initial')){
+                    this.formGroup[index].focus = false;
+                }
             },
             submitItem(data) {
                 return
