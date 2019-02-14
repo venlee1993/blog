@@ -40,7 +40,7 @@
         created() {
             this.$http.get('/apis/post/index').then(res => {
                 if (res.status == 200) {
-                    this.posts = res.data
+                    this.posts = res.data.data
                 }
             })
 

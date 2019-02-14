@@ -25,7 +25,6 @@
                                         <input
                                             type="text"
                                             :name="input.name"
-                                            :initial="input.value"
                                             class="input"
                                             placeholder=""
                                             autocomplete="off"
@@ -56,11 +55,11 @@
         data() {
             return {
                 formGroup: [
-                    {name: 'name', label: '用户名', value: 'venlee', focus: false},
-                    {name: 'work', label: '职位', value: 'venlee', focus: false},
-                    {name: 'company', label: '公司', value: 'venlee', focus: false},
-                    {name: 'profile', label: '个人介绍', value: 'venlee', focus: false},
-                    {name: 'index', label: '个人主页', value: 'venlee', focus: false}
+                    {name: 'name', label: '用户名', value: 'venlee', initial: 'venlee', focus: false},
+                    {name: 'work', label: '职位', value: 'venlee', initial: 'venlee', focus: false},
+                    {name: 'company', label: '公司', value: 'venlee', initial: 'venlee', focus: false},
+                    {name: 'profile', label: '个人介绍', value: 'venlee', initial: 'venlee', focus: false},
+                    {name: 'index', label: '个人主页', value: 'venlee', initial: 'venlee', focus: false}
                 ]
             }
         },
@@ -72,9 +71,7 @@
                 this.formGroup[index].focus = true;
             },
             inputBlur(index) {
-                if(this.formGroup[index]==event.target.getAttribute('initial')){
-                    this.formGroup[index].focus = false;
-                }
+                this.formGroup[index].focus = this.formGroup[index].value == this.formGroup[index].initial ? false : true;
             },
             submitItem(data) {
                 return
@@ -84,11 +81,14 @@
             },
             modifyItem(tar) {
                 this.$refs[tar][0].select();
-                this.$refs[tar][0].focus();
             },
             upload() {
                 let file = event.target.files[0];
-                this.$http.post('/apis/user/upload', {avatar: file}).then(res => {
+                let fd = new FormData();
+                fd.append('avatar', file);
+                this.$http.post('/apis/user/upload', fd, {
+                    headers: {'Content-Type': 'multipart/form-data'}
+                }).then(res => {
                     console.log(res);
                 })
             }
