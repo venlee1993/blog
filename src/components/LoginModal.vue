@@ -78,14 +78,18 @@
                     password: this.formData.password,
                 }
                 this.isSubmit = true;
-                this.$http.post('/apis/auth/login', params).then(res => {
+                this.$http.post('http://zhifou.com/api/auth/login', params).then(res => {
+                    console.log(res);
                     if (res.status == 201) {
+                        //本地存储登录信息
                         this.LOGIN(res.data)
+                        //收起登录弹框
                         this.SET_MODAL({status: false, type: `login`});
-                        this.isSubmit = false;
                     }
+                }).then(res => {
+                    this.isSubmit = false;
                 }).catch(e => {
-                    console.error(e);
+                    this.isSubmit = false;
                 })
             },
             registerRequest() {
@@ -95,7 +99,7 @@
                     password_confirmation: this.formData.password_confirmation
                 }
                 this.isSubmit = true;
-                this.$http.post('/apis/auth/register', params).then(res => {
+                this.$http.post('http://zhifou.com/api/auth/register', params).then(res => {
                     if (res.status == 201) {
                         this.isSubmit = false;
                         window.location.reload();

@@ -51,16 +51,17 @@
         methods: {
             getDetail() {
                 let parmas = this.$route.params.id
-                this.$http.get(`/apis/post/show/${parmas}`).then(res => {
+                this.$http.get(`http://zhifou.com/api/post/${parmas}/show`).then(res => {
                     if (res.status == 200) {
                         this.detail = res.data;
                     }
                 })
             },
             getComment() {
+                //传入post的ID
                 let parmas = this.$route.params.id
-                this.$http.get(`/apis/comment/list/${parmas}`).then(res => {
-                    this.comments = res.data.list
+                this.$http.get(`http://zhifou.com/api/post/${parmas}/comment`).then(res => {
+                    this.comments = res.data
                 })
             }
         }
@@ -92,6 +93,7 @@
             font-weight: bold;
         }
     }
+
     article {
         padding: 1rem 0;
     }

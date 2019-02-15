@@ -9,7 +9,7 @@ export default {
     ['LOGIN'](state, data) {
         state.loginState = true;
         state.userInfo = data.user;
-        Storage.set('loginState', true).set('token', data.token).set('userInfo', JSON.stringify(data.user))
+        Storage.set('loginState', true).set('token', data.access_token).set('userInfo', JSON.stringify(data.user))
     },
 
     ['LOGOUT'](state) {

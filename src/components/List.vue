@@ -3,14 +3,14 @@
         <div>
             <ul class="list-unstyled">
                 <b-media right-align vertical-align="center" tag="li" v-for="(post,index) in posts" :key="index">
-                    <b-img slot="aside" :src="`http://blog.com/${post.cover}`" width="80" height="80" alt="placeholder"/>
+                    <b-img slot="aside" :src="`${post.cover}`" width="80" height="80" alt="placeholder"/>
                     <div class="media-info">
                         <div class="info-row">
                             <ul class="tag-list">
-                                <li class="item">{{post.tag}}</li>
+                                <li class="item">{{post.column.name}}</li>
                                 <li class="item">石杉的架构笔记</li>
                                 <li class="item">{{post.created_at}}</li>
-                                <li class="item">{{post.user_id}}</li>
+                                <li class="item">{{post.uid}}</li>
                             </ul>
                         </div>
                         <div class="title-row">
@@ -19,10 +19,10 @@
                         <div class="action-list">
                             <ul class="action-row">
                                 <li class="item like" @click="giveLike(post.id)">
-                                    <span><i class="fas fa-thumbs-up"></i>{{ post.likes_count }}</span>
+                                    <span><i class="fas fa-thumbs-up"></i>0</span>
                                 </li>
                                 <li class="item comment">
-                                    <span><i class="fas fa-comment-alt"></i>{{post.comments_count}}</span>
+                                    <span><i class="fas fa-comment-alt"></i>0</span>
                                 </li>
                             </ul>
                         </div>
@@ -43,7 +43,7 @@
         },
         methods: {
             giveLike(id) {
-                this.$http.post(`/apis/like/inpost/${id}`).then(res => {
+                this.$http.post(`http://zhifou.com/api/like/inpost/${id}`).then(res => {
                     console.log(res);
                 })
             }

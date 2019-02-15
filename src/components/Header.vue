@@ -16,7 +16,7 @@
                     </b-nav-form>
                     <b-nav-item-dropdown no-caret v-if="loginState">
                         <template slot="button-content">
-                            <b-img rounded="circle" width="30" height="30" :src="`http://blog.com/${userInfo.avatar||defaultAvatar}`" alt="img"></b-img>
+                            <b-img rounded="circle" width="30" height="30" :src="userInfo.avatar||defaultAvatar" alt="img"></b-img>
                         </template>
                         <router-link to="/user/profile" class="dropdown-item">个人中心</router-link>
                         <router-link to="#" class="dropdown-item">我的主页</router-link>

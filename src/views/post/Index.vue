@@ -38,9 +38,9 @@
             }
         },
         created() {
-            this.$http.get('/apis/post/index').then(res => {
+            this.$http.get('http://zhifou.com/api/post/list').then(res => {
                 if (res.status == 200) {
-                    this.posts = res.data.data
+                    this.posts = res.data
                 }
             })
 

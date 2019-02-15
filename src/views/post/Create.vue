@@ -89,10 +89,10 @@
             onSubmit(evt) {
                 evt.preventDefault();
                 let data = this.form;
-                this.$http.post('/apis/post/store', data)
+                this.$http.post('http://zhifou.com/api/post/store', data)
                     .then(res => {
-                        if (res.status == 200) {
-                            this.$router.push({path: `/post/detail/${res.data.post}`})
+                        if (res.status == 201) {
+                            // this.$router.push({path: `/post/detail/${res.data.post}`})
                         }
                     })
             },
